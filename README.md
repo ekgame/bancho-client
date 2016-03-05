@@ -63,3 +63,4 @@ mp.startGame();
 // Send a message to #multiplayer channel
 bancho.sendMessage("#multiplayer", "Hello world!");
 ```
+For more examples, check out my [AutoHost](https://github.com/ekgame/osu-auto-host) project.

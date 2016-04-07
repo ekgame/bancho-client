@@ -48,7 +48,8 @@ public class BanchoClient extends Thread implements Bancho {
 	public static final String OSU_HOST = "osu.ppy.sh";
 	public static final String BANCHO_HOST = "c.ppy.sh";
 	
-	public static final String CLIENT_VERSION = "b20151228.3";
+	public static final String CLIENT_VERSION = "b20160403.6";
+	public static final String EXE_HASH = "35f34a2110e715864cea6ebb5d7d7df8";
 	
 	public String username;
 	public String password;
@@ -149,7 +150,7 @@ public class BanchoClient extends Thread implements Bancho {
 		// Latest MD5 hash for the osu!.exe executable can be found here: https://goo.gl/IVUVA3
 		TimeZone tz = TimeZone.getDefault();
 		int offset = tz.getRawOffset()/3600000;
-		requestBody += CLIENT_VERSION + "|" + offset + "|0|fbe80082a80bbb1c8c338db2918e5b21::d41d8cd98f00b204e9800998ecf8427e:ad921d60486366258809553a3db49a4a:ad921d60486366258809553a3db49a4a:|0" + "\n";
+		requestBody += CLIENT_VERSION + "|" + offset + "|0|" + EXE_HASH + "::d41d8cd98f00b204e9800998ecf8427e:ad921d60486366258809553a3db49a4a:ad921d60486366258809553a3db49a4a:|0" + "\n";
 		HttpEntity entity = new ByteArrayEntity(requestBody.getBytes("UTF-8"));
 		
 		HttpPost request = new HttpPost(BANCHO_URI);

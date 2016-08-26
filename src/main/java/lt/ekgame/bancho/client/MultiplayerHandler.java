@@ -15,6 +15,7 @@ import lt.ekgame.bancho.api.packets.server.PacketRoomEveryoneLoaded;
 import lt.ekgame.bancho.api.packets.server.PacketRoomJoined;
 import lt.ekgame.bancho.api.packets.server.PacketRoomUpdate;
 import lt.ekgame.bancho.api.units.Beatmap;
+import lt.ekgame.bancho.api.units.MatchSpecialMode;
 import lt.ekgame.bancho.api.units.MultiplayerRoom;
 import lt.ekgame.bancho.api.units.UserStatus;
 
@@ -139,6 +140,17 @@ public class MultiplayerHandler implements PacketHandler {
 	
 	public boolean isReady() {
 		return isReady;
+	}
+	
+	public boolean isFreeModsEnabled() {
+		return currentRoom != null && currentRoom.specialMode == MatchSpecialMode.FREE_MOD;
+	}
+	
+	public void setFreeMods(boolean enabled) {
+		if (isHost()) {
+			currentRoom.specialMode = enabled ? MatchSpecialMode.FREE_MOD : MatchSpecialMode.NONE;
+			sendRoomUpdate();
+		}
 	}
 	
 	public MultiplayerRoom getRoom() {
